@@ -306,6 +306,7 @@ const en = {
 
   'farm.seasonKharif': 'Kharif',
   'farm.seasonRabi': 'Rabi',
+  'farm.seasonZaid': 'Zaid',
   'farm.soilBlack': 'Black',
   'farm.soilRed': 'Red',
   'farm.soilAlluvial': 'Alluvial',
@@ -786,6 +787,7 @@ const hi = {
 
   'farm.seasonKharif': 'खरीफ',
   'farm.seasonRabi': 'रबी',
+  'farm.seasonZaid': 'जायद',
   'farm.soilBlack': 'काली',
   'farm.soilRed': 'लाल',
   'farm.soilAlluvial': 'जलोढ़',
@@ -1266,6 +1268,7 @@ const mr = {
 
   'farm.seasonKharif': 'खरीप',
   'farm.seasonRabi': 'रबी',
+  'farm.seasonZaid': 'जायद',
   'farm.soilBlack': 'काळी',
   'farm.soilRed': 'लाल',
   'farm.soilAlluvial': 'जलोढ',
