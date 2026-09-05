@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html, body, #root {
+  background: #FDFCF8;
+  color: #1B1B1A;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: 'Inter', 'DM Sans', system-ui, sans-serif;
+  font-feature-settings: "ss01", "cv11";
+  background-color: #FDFCF8;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Plus Jakarta Sans', 'Manrope', 'Inter', system-ui, sans-serif;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+::selection {
+  background: #D1FAE5;
+  color: #15291A;
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-[1200px] px-6 sm:px-8 lg:px-10;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-[11px] sm:text-xs font-semibold tracking-[0.18em] uppercase text-forest-600;
+  }
+
+  .h-display {
+    @apply font-display font-bold tracking-tighter2 text-charcoal-800 leading-[1.04];
+  }
+
+  .h-section {
+    @apply font-display font-bold tracking-tighter2 text-charcoal-800 leading-[1.08];
+  }
+
+  .subtle-border {
+    @apply border border-charcoal-100;
+  }
+
+  .card-soft {
+    @apply bg-white border border-charcoal-100 rounded-2xl shadow-soft;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-forest-600 text-white px-6 py-3.5 text-[15px] font-semibold tracking-tightish shadow-soft transition-all duration-300 hover:bg-forest-700 hover:shadow-elev focus:outline-none focus-visible:ring-2 focus-visible:ring-forest-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-cream-50;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-white/70 backdrop-blur-sm text-charcoal-700 px-6 py-3.5 text-[15px] font-semibold tracking-tightish border border-charcoal-100 transition-all duration-300 hover:bg-white hover:border-charcoal-200 hover:text-charcoal-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-charcoal-400/30 focus-visible:ring-offset-2 focus-visible:ring-offset-cream-50;
+  }
+
+  .pill {
+    @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-semibold;
+  }
+
+  .label-eyebrow {
+    @apply text-[11px] font-semibold uppercase tracking-[0.16em] text-charcoal-500;
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
+  .grain-bg {
+    background-image: radial-gradient(circle at 1px 1px, rgba(15,15,14,0.045) 1px, transparent 0);
+    background-size: 22px 22px;
+  }
+  .contour-bg {
+    background-image:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(212,162,74,0.10), transparent 60%),
+      radial-gradient(ellipse 70% 50% at 80% 60%, rgba(63,126,74,0.07), transparent 60%);
+  }
+  .ring-soft {
+    box-shadow: 0 0 0 1px rgba(15,15,14,0.05);
+  }
+  .mask-fade-b {
+    -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+            mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  }
+  .mask-fade-r {
+    -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+            mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  }
+}

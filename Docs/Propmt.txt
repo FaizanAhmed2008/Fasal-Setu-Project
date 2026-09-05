@@ -1,0 +1,25 @@
+You are helping build a prototype called FasalSetu based on the attached PRD.
+
+Before writing any code, read the entire PRD carefully — especially the API Contract
+(Section 8) and the Vibe-Coding Build Order (Section 9). These two sections are the
+source of truth for how this project stays conflict-free across a multi-person team.
+
+Rules to follow strictly:
+1. Do NOT change the API contract (endpoint names, request params, response shape) —
+   treat it as fixed. If something seems missing, ask instead of inventing a new shape.
+2. Do NOT skip ahead in the build stages — check which Stage the current task belongs
+   to before starting, and don't build something that depends on a piece from a later
+   stage that doesn't exist yet.
+3. Keep the project structure clean and predictable: standard FastAPI folder layout
+   for backend, standard Vite+React folder layout for frontend, so any team member can
+   open the repo and immediately know where things live.
+4. Keep mock_data.json as the single source of truth for data — don't hardcode crop
+   data inside functions or components.
+5. If you're building a module described in the PRD (e.g. Saturation Risk Engine),
+   implement the actual logic described in that section — don't shortcut it with a
+   hardcoded lookup table.
+6. If a requirement is unclear or missing from the PRD, stop and ask a clarifying
+   question rather than guessing — guessing is what causes merge conflicts later.
+
+Confirm you've read the PRD and understood the build order before starting, then
+begin with whatever task I give you next.
