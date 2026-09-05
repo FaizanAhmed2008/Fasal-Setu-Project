@@ -15,7 +15,6 @@ const LS_KEY = 'fasalsetu_lang';
 const SEASON_KEYS = {
   Kharif: 'farm.seasonKharif',
   Rabi: 'farm.seasonRabi',
-  Zaid: 'farm.seasonZaid',
 };
 
 function getInitialLang() {

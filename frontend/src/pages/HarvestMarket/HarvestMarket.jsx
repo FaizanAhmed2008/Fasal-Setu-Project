@@ -26,6 +26,8 @@ import { DEMO_CROPS } from '../../data/demoData';
 
 const easeOut = [0.22, 1, 0.36, 1];
 
+const LOCALE_MAP = { en: 'en-IN', hi: 'hi-IN', mr: 'mr-IN' };
+
 const YIELD_PER_ACRE = {
   Tomato: 12, Onion: 8, Wheat: 2.5, Cotton: 1.8,
   Soybean: 3.0, Sugarcane: 35, Rice: 4.5,
@@ -51,8 +53,8 @@ const parseLandSize = (value) => {
   return Number.isFinite(n) && n > 0 ? n : 1;
 };
 
-const formatDate = (date) =>
-  date.toLocaleDateString('en-IN', {
+const formatDate = (date, locale = 'en-IN') =>
+  date.toLocaleDateString(locale, {
     day: 'numeric',
     month: 'short',
     year: 'numeric',
@@ -95,8 +97,8 @@ const ErrorState = ({ message, onRetry, t }) => (
   </Card>
 );
 
-const PriceBar = ({ cropName, t, marketData }) => {
-  const cropData = DEMO_CROPS[cropName];
+const PriceBar = ({ crop, t, marketData }) => {
+  const cropData = DEMO_CROPS[crop];
 
   // Use response data when available, else fall back to demo crops — but
   // FasalSetu's expected price must ALWAYS be richer than the current price.
@@ -122,7 +124,7 @@ const PriceBar = ({ cropName, t, marketData }) => {
         </h3>
         <span className="ml-auto pill bg-forest-50 text-forest-700">
           <span className="h-1.5 w-1.5 rounded-full bg-forest-500" />
-          FasalSetu {confidence}% CI
+          {t('market.ci', { confidence })}
         </span>
       </div>
 
@@ -188,12 +190,13 @@ const PriceBar = ({ cropName, t, marketData }) => {
 const HarvestMarket = () => {
   const navigate = useNavigate();
   const { chosenCrop, farmer, setMarket, setHarvest } = useFarmerState();
-  const { t } = useLanguage();
+  const { t, cropName, lang } = useLanguage();
 
-  const cropName = chosenCrop?.crop || 'Tomato';
+  const crop = chosenCrop?.crop || 'Tomato';
+  const locale = LOCALE_MAP[lang] || 'en-IN';
   const landSize = parseLandSize(farmer?.landSize);
-  const yieldPerAcre = getByCrop(YIELD_PER_ACRE, cropName, 1);
-  const duration = getByCrop(CROP_DURATIONS, cropName, 90);
+  const yieldPerAcre = getByCrop(YIELD_PER_ACRE, crop, 1);
+  const duration = getByCrop(CROP_DURATIONS, crop, 90);
 
   const [marketData, setMarketData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -203,7 +206,7 @@ const HarvestMarket = () => {
     setLoading(true);
     setError('');
     try {
-      const data = await apiService.getMarket(cropName);
+      const data = await apiService.getMarket(crop);
       setMarketData(data);
       setMarket(data);
     } catch (err) {
@@ -219,7 +222,7 @@ const HarvestMarket = () => {
   useEffect(() => {
     loadMarket();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cropName]);
+  }, [crop]);
 
   const harvest = useMemo(() => {
     const date = new Date();
@@ -233,7 +236,7 @@ const HarvestMarket = () => {
   useEffect(() => {
     setHarvest({
       estimatedYield: harvest.estimatedYield,
-      harvestDate: formatDate(harvest.harvestDate),
+      harvestDate: formatDate(harvest.harvestDate, locale),
       yieldPerAcre,
       landSize,
     });
@@ -255,21 +258,21 @@ const HarvestMarket = () => {
     {
       icon: Sprout,
       label: t('market.crop'),
-      value: cropName,
+      value: cropName(crop),
       sub: '',
       accent: true,
     },
     {
       icon: TrendingUp,
       label: t('market.estYield'),
-      value: `${harvest.estimatedYield} tons`,
+      value: `${harvest.estimatedYield} ${t('unit.tons')}`,
       sub: t('market.estYieldSub', { land: landSize, yield: yieldPerAcre }),
       accent: true,
     },
     {
       icon: Calendar,
       label: t('market.harvestBy'),
-      value: formatDate(harvest.harvestDate),
+      value: formatDate(harvest.harvestDate, locale),
       sub: t('market.daysFromNow', { n: duration }),
       accent: false,
     },
@@ -295,7 +298,7 @@ const HarvestMarket = () => {
               {t('market.title')}
             </h1>
             <p className="text-[15.5px] leading-[1.6] text-charcoal-500 text-pretty max-w-xl">
-              {t('market.subtitle', { crop: cropName })}
+              {t('market.subtitle', { crop: cropName(crop) })}
             </p>
           </div>
 
@@ -383,7 +386,7 @@ const HarvestMarket = () => {
                   {t('market.noDataTitle')}
                 </h2>
                 <p className="text-[14px] leading-[1.6] text-charcoal-500 mb-6">
-                  {t('market.noDataMsg', { crop: cropName })}
+                  {t('market.noDataMsg', { crop: cropName(crop) })}
                 </p>
                 <Button variant="secondary" onClick={loadMarket} className="w-full">
                   {t('market.refresh')}
@@ -392,7 +395,7 @@ const HarvestMarket = () => {
             ) : (
               <>
                 {/* Price Overview Bar */}
-                <PriceBar cropName={cropName} t={t} marketData={marketData} />
+                <PriceBar crop={crop} t={t} marketData={marketData} />
 
                 {/* Best mandi + sell window */}
                 <div className="grid lg:grid-cols-[1.4fr_1fr] gap-5 mb-8">
@@ -427,7 +430,7 @@ const HarvestMarket = () => {
                       </span>
                     </div>
                     <p className="mt-3 text-[14px] leading-[1.6] text-charcoal-500 text-pretty">
-                      {t('market.sellWindowText', { crop: cropName })}
+                      {t('market.sellWindowText', { crop: cropName(crop) })}
                     </p>
                     <div className="mt-5 pt-5 border-t border-charcoal-100 text-[12.5px] text-charcoal-500 flex items-center gap-1.5">
                       <MapPin className="h-3.5 w-3.5 text-charcoal-400" strokeWidth={2.3} />

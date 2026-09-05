@@ -168,7 +168,7 @@ const GrowthAnalysis = ({ result, t }) => {
             </div>
             <div className="flex items-center gap-2 mt-0.5">
               <Sprout className="h-5 w-5 text-forest-600" strokeWidth={2.2} />
-              <span className="text-[24px] font-bold text-charcoal-800 tracking-tighter2">{result.crop}</span>
+              <span className="text-[24px] font-bold text-charcoal-800 tracking-tighter2">{t(`crop.${result.crop}`)}</span>
             </div>
             <div className="mt-2 flex items-center gap-2">
               <span className={`pill ${sevKey.pill} border`}>
@@ -207,7 +207,7 @@ const GrowthAnalysis = ({ result, t }) => {
       {/* Stats */}
       <div className="grid grid-cols-2 gap-3">
         <StatTile icon={Calendar} label={t('growth.growthStage')} value={t(`growth.${result.growthStageKey || 'vegetative'}`)} sub={`${t('growth.nextStage')}: ${t(`growth.${stageKeyOf(result.nextStage)}`)}`} accent="text-forest-700" />
-        <StatTile icon={Droplets} label={t('growth.daysToNext')} value={`${result.daysToNextStage || 18} days`} sub={`${t('growth.healthAtStage')}: ${result.healthScore || 70}`} />
+        <StatTile icon={Droplets} label={t('growth.daysToNext')} value={`${result.daysToNextStage || 18} ${t('growth.daysUnit')}`} sub={`${t('growth.healthAtStage')}: ${result.healthScore || 70}`} />
       </div>
 
       {/* Stage timeline */}
@@ -257,15 +257,15 @@ const GrowthAnalysis = ({ result, t }) => {
       {market.currentMarketPrice && market.fasalSetuExpectedPrice && market.fasalSetuExpectedPrice > market.currentMarketPrice && (
         <Card className="p-4 mt-1">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-[11px] font-semibold uppercase tracking-wide text-charcoal-400">Market Signal</span>
+            <span className="text-[11px] font-semibold uppercase tracking-wide text-charcoal-400">{t('growth.marketSignal')}</span>
             <span className="flex items-center gap-1 text-[11px] font-bold text-forest-700">
               <ArrowRight className="h-3 w-3" strokeWidth={2.6} /> +{market.priceIncreasePercentage}%
             </span>
           </div>
           <div className="flex items-center justify-between text-[13px]">
-            <span className="text-charcoal-500">Current: ₹{market.currentMarketPrice.toLocaleString('en-IN')}</span>
+            <span className="text-charcoal-500">{t('growth.currentPriceLabel')}: ₹{market.currentMarketPrice.toLocaleString('en-IN')}</span>
             <span className="text-charcoal-400">→</span>
-            <span className="text-forest-700 font-bold">Expected: ₹{market.fasalSetuExpectedPrice.toLocaleString('en-IN')}</span>
+            <span className="text-forest-700 font-bold">{t('growth.expectedPriceLabel')}: ₹{market.fasalSetuExpectedPrice.toLocaleString('en-IN')}</span>
           </div>
         </Card>
       )}

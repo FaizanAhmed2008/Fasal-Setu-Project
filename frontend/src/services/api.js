@@ -6,6 +6,8 @@ import {
   getGrowthInfoForCrop,
   getMarketDataForCrop,
   getRecommendationsForSeason,
+  getRegionalMarketNote,
+  getMarketOutlookForCrop,
 } from '../data/demoData';
 
 const API_BASE_URL = '/api';
@@ -53,6 +55,8 @@ const getRecommendationsFallback = (district, landSize, season) => {
           : name === 'Onion'
           ? `Prices rose 24% last season, but planted area has not caught up (1%) - low risk of oversupply, still a good opportunity.`
           : `Prices moved 5% and planted area moved 8% last season - moderate saturation risk.`,
+      ...getRegionalMarketNote(name, district),
+      market_outlook: getMarketOutlookForCrop(name),
     }))
     .sort((a, b) => {
       const riskWeight = { Low: 0.55, Medium: 0.30, High: 0.10 };

@@ -1,12 +1,13 @@
 import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { Sprout, Droplets, Leaf, Check, Calendar, ArrowRight } from 'lucide-react';
+import { Sprout, Leaf, Check, Calendar, ArrowRight, TrendingUp, Tag } from 'lucide-react';
 import Button from '../../components/ui/Button';
 import Card from '../../components/ui/Card';
 import { PageNav, BackButton, ProgressSteps } from '../../components/ui/PageChrome';
 import { useFarmerState } from '../../context/FarmerStateContext';
 import { useLanguage } from '../../context/LanguageContext';
+import { getMarketOutlookForCrop, getRegionalMarketNote } from '../../data/demoData';
 
 const easeOut = [0.22, 1, 0.36, 1];
 
@@ -31,60 +32,77 @@ const addDays = (date, days) => {
   return result;
 };
 
-const formatDate = (date) =>
-  date.toLocaleDateString('en-IN', {
+const LOCALE_MAP = { en: 'en-IN', hi: 'hi-IN', mr: 'mr-IN' };
+
+const formatDate = (date, locale = 'en-IN') =>
+  date.toLocaleDateString(locale, {
     day: 'numeric',
     month: 'short',
     year: 'numeric',
   });
 
-const formatShortDate = (date) =>
-  date.toLocaleDateString('en-IN', { day: 'numeric', month: 'short' });
+const formatShortDate = (date, locale = 'en-IN') =>
+  date.toLocaleDateString(locale, { day: 'numeric', month: 'short' });
 
-const TIMELINE_STEPS = [
+const buildTimelineSteps = (duration) => [
   {
-    labelKey: 'plan.stepSeed',
+    labelKey: 'plan.stepPlanting',
     icon: Sprout,
     dayOffset: 0,
     tagKey: 'plan.tagDay1',
   },
   {
-    labelKey: 'plan.stepSowing',
+    labelKey: 'plan.stepGrowing',
     icon: Leaf,
-    dayOffset: 7,
-    tagKey: 'plan.tagWeek1',
+    dayOffset: Math.max(1, Math.round(duration * 0.5)),
+    tagKey: 'plan.tagGrowing',
   },
   {
-    labelKey: 'plan.stepFert1',
-    icon: Droplets,
-    dayOffset: 30,
-    tagKey: 'plan.tagWeek4',
+    labelKey: 'plan.stepHarvest',
+    icon: Calendar,
+    dayOffset: duration,
+    tagKey: 'plan.tagHarvest',
   },
   {
-    labelKey: 'plan.stepFert2',
-    icon: Droplets,
-    dayOffset: 60,
-    tagKey: 'plan.tagWeek8',
+    labelKey: 'plan.stepOutlook',
+    icon: TrendingUp,
+    dayOffset: duration,
+    tagKey: 'plan.tagOutlook',
   },
 ];
 
 const CropPlanning = () => {
   const navigate = useNavigate();
-  const { chosenCrop } = useFarmerState();
-  const { t } = useLanguage();
+  const { chosenCrop, farmer } = useFarmerState();
+  const { t, cropName, lang } = useLanguage();
 
-  const cropName = chosenCrop?.crop || 'Tomato';
-  const duration = getDuration(cropName);
+  const crop = chosenCrop?.crop || 'Tomato';
+  const locale = LOCALE_MAP[lang] || 'en-IN';
+  const duration = getDuration(crop);
   const today = useMemo(() => new Date(), []);
 
   const harvestDate = addDays(today, duration);
   const sowingStart = addDays(today, 1);
   const sowingEnd = addDays(today, 10);
 
-  const timelineSteps = TIMELINE_STEPS.map((step) => ({
+  const outlook = getMarketOutlookForCrop(crop);
+  const regional = getRegionalMarketNote(crop, farmer.district);
+
+  const marketNote = regional.note_key
+    ? t(regional.note_key, {
+        district: farmer.district || '',
+        supply: regional.supply ? t(`risk.${regional.supply.toLowerCase()}`) : '',
+        demand: regional.demand ? t(`risk.${regional.demand.toLowerCase()}`) : '',
+      })
+    : null;
+
+  const timelineSteps = buildTimelineSteps(duration).map((step) => ({
     ...step,
     label: t(step.labelKey),
-    tag: t(step.tagKey),
+    tag:
+      step.tagKey === 'plan.tagHarvest'
+        ? `${formatShortDate(addDays(today, duration), locale)} · ₹${outlook.price_min?.toLocaleString()}–₹${outlook.price_max?.toLocaleString()}`
+        : t(step.tagKey),
     date: addDays(today, step.dayOffset),
   }));
 
@@ -110,7 +128,7 @@ const CropPlanning = () => {
               {t('plan.title')}
             </h1>
             <p className="text-[15.5px] leading-[1.6] text-charcoal-500 text-pretty max-w-xl">
-              {t('plan.subtitle', { crop: cropName })}
+              {t('plan.subtitle', { crop: cropName(crop) })}
             </p>
           </div>
 
@@ -120,7 +138,7 @@ const CropPlanning = () => {
               {
                 icon: Sprout,
                 label: t('plan.crop'),
-                value: cropName,
+                value: cropName(crop),
                 accent: true,
               },
               {
@@ -131,7 +149,7 @@ const CropPlanning = () => {
               {
                 icon: Leaf,
                 label: t('plan.harvestBy'),
-                value: formatDate(harvestDate),
+                value: formatDate(harvestDate, locale),
               },
             ].map((item, i) => (
               <motion.div
@@ -243,7 +261,7 @@ const CropPlanning = () => {
                           {step.tag}
                         </div>
                         <div className="text-[11px] text-charcoal-400">
-                          {formatShortDate(step.date)}
+                          {formatShortDate(step.date, locale)}
                         </div>
                       </div>
                     </motion.div>
@@ -310,13 +328,76 @@ const CropPlanning = () => {
                         </span>
                         <span className="text-charcoal-300">·</span>
                         <span className="text-[12px] text-charcoal-400">
-                          {formatShortDate(step.date)}
+                          {formatShortDate(step.date, locale)}
                         </span>
                       </div>
                     </div>
                   </motion.div>
                 );
               })}
+            </div>
+
+            {/* Market Outlook at harvest */}
+            <div className="mt-8 rounded-2xl border border-forest-100 bg-forest-50/40 p-5 sm:p-6">
+              <div className="flex items-center gap-2 mb-4">
+                <span className="h-8 w-8 rounded-lg bg-charcoal-800 text-white flex items-center justify-center">
+                  <TrendingUp className="h-4 w-4" strokeWidth={2.4} />
+                </span>
+                <h3 className="text-[15px] font-semibold text-charcoal-800 tracking-tightish">
+                  {t('plan.marketOutlook')}
+                </h3>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div className="rounded-xl border border-charcoal-100 bg-white px-4 py-3">
+                  <div className="text-[11.5px] font-semibold uppercase tracking-wider text-charcoal-400 inline-flex items-center gap-1.5">
+                    <Tag className="h-3 w-3" strokeWidth={2.4} /> {t('regional.priceRange')}
+                  </div>
+                  <div className="mt-1 text-[15px] font-semibold text-charcoal-800">
+                    ₹{outlook.price_min?.toLocaleString()}–₹{outlook.price_max?.toLocaleString()}
+                  </div>
+                </div>
+                <div className="rounded-xl border border-charcoal-100 bg-white px-4 py-3">
+                  <div className="text-[11.5px] font-semibold uppercase tracking-wider text-charcoal-400">
+                    {t('regional.supply')} {t('plan.outlook')}
+                  </div>
+                  <div className="mt-2">
+                    {regional.supply ? (
+                      <span className="pill border border-charcoal-200 bg-cream-50 text-charcoal-600">
+                        {t(`risk.${regional.supply.toLowerCase()}`)}
+                      </span>
+                    ) : (
+                      <span className="text-[13px] text-charcoal-400">—</span>
+                    )}
+                  </div>
+                </div>
+                <div className="rounded-xl border border-charcoal-100 bg-white px-4 py-3">
+                  <div className="text-[11.5px] font-semibold uppercase tracking-wider text-charcoal-400">
+                    {t('regional.demand')} {t('plan.outlook')}
+                  </div>
+                  <div className="mt-2">
+                    {regional.demand ? (
+                      <span className="pill border border-charcoal-200 bg-cream-50 text-charcoal-600">
+                        {t(`risk.${regional.demand.toLowerCase()}`)}
+                      </span>
+                    ) : (
+                      <span className="text-[13px] text-charcoal-400">—</span>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              {marketNote && (
+                <div
+                  className={`mt-4 rounded-xl border p-3 text-[13px] leading-[1.55] ${
+                    regional.supply === 'high'
+                      ? 'border-warn-200 bg-warn-50 text-warn-700'
+                      : 'border-forest-200 bg-forest-50 text-forest-700'
+                  }`}
+                >
+                  {marketNote}
+                </div>
+              )}
             </div>
           </Card>
 
@@ -341,7 +422,7 @@ const CropPlanning = () => {
                     <Sprout className="h-3 w-3" strokeWidth={2.4} /> {t('plan.crop')}
                   </div>
                   <div className="mt-1 text-[15px] font-semibold text-forest-700">
-                    {cropName}
+                    {cropName(crop)}
                   </div>
                 </div>
                 <div className="rounded-xl border border-charcoal-100 bg-cream-50 px-4 py-3.5">
@@ -349,7 +430,7 @@ const CropPlanning = () => {
                     <Calendar className="h-3 w-3" strokeWidth={2.4} /> {t('plan.today')}
                   </div>
                   <div className="mt-1 text-[15px] font-semibold text-charcoal-800">
-                    {formatDate(today)}
+                    {formatDate(today, locale)}
                   </div>
                 </div>
                 <div className="rounded-xl border border-charcoal-100 bg-cream-50 px-4 py-3.5">
@@ -357,7 +438,7 @@ const CropPlanning = () => {
                     <Leaf className="h-3 w-3" strokeWidth={2.4} /> {t('plan.sowingWindow')}
                   </div>
                   <div className="mt-1 text-[15px] font-semibold text-charcoal-800">
-                    {formatShortDate(sowingStart)} – {formatShortDate(sowingEnd)}
+                    {formatShortDate(sowingStart, locale)} – {formatShortDate(sowingEnd, locale)}
                   </div>
                 </div>
                 <div className="rounded-xl border border-charcoal-100 bg-cream-50 px-4 py-3.5">
@@ -365,7 +446,7 @@ const CropPlanning = () => {
                     <Check className="h-3 w-3" strokeWidth={2.4} /> {t('plan.harvestDate')}
                   </div>
                   <div className="mt-1 text-[15px] font-semibold text-charcoal-800">
-                    {formatDate(harvestDate)}
+                    {formatDate(harvestDate, locale)}
                   </div>
                 </div>
               </div>

@@ -129,226 +129,41 @@
       ],
       "sell_window": "Next 10-14 days",
       "alerts": [
-        {"type": "weather", "message": "Maintain proper water level in fields."},
+        {"type": "weather", "message": "Good rainfall expected, prepare drainage channels."},
         {"type": "pest", "message": "Watch for stem borer and leaf folder damage."},
-        {"type": "weather", "message": "Good rainfall expected, prepare drainage channels."}
-      ]
-    },
-    "Maize": {
-      "expected_profit": 41000,
-      "history": [
-        {"season": "Kharif 2023", "avg_price": 1850, "planted_area": 28000},
-        {"season": "Kharif 2024", "avg_price": 2050, "planted_area": 30500},
-        {"season": "Kharif 2025", "avg_price": 2280, "planted_area": 32000}
-      ],
-      "mandis": [
-        {"name": "Pune", "distance_km": 42, "price": 2100},
-        {"name": "Nashik", "distance_km": 65, "price": 2050},
-        {"name": "Aurangabad", "distance_km": 120, "price": 1980}
-      ],
-      "sell_window": "Next 8-12 days",
-      "alerts": [
-        {"type": "weather", "message": "Monitor for fall armyworm during early growth."},
-        {"type": "pest", "message": "Adequate rainfall supports good cob development."}
-      ]
-    },
-    "Groundnut": {
-      "expected_profit": 43000,
-      "history": [
-        {"season": "Kharif 2023", "avg_price": 5200, "planted_area": 18000},
-        {"season": "Kharif 2024", "avg_price": 5600, "planted_area": 19500},
-        {"season": "Kharif 2025", "avg_price": 6100, "planted_area": 20800}
-      ],
-      "mandis": [
-        {"name": "Nashik", "distance_km": 35, "price": 5800},
-        {"name": "Pune", "distance_km": 80, "price": 5600},
-        {"name": "Aurangabad", "distance_km": 110, "price": 5400}
-      ],
-      "sell_window": "Next 10-14 days",
-      "alerts": [
-        {"type": "weather", "message": "Ensure proper drainage during pod formation."},
-        {"type": "pest", "message": "Monitor for leaf spot and tikka disease."}
-      ]
-    },
-    "Bajra": {
-      "expected_profit": 34000,
-      "history": [
-        {"season": "Kharif 2023", "avg_price": 1650, "planted_area": 35000},
-        {"season": "Kharif 2024", "avg_price": 1800, "planted_area": 36000},
-        {"season": "Kharif 2025", "avg_price": 1950, "planted_area": 37200}
-      ],
-      "mandis": [
-        {"name": "Aurangabad", "distance_km": 85, "price": 1850},
-        {"name": "Nashik", "distance_km": 120, "price": 1800},
-        {"name": "Pune", "distance_km": 150, "price": 1750}
-      ],
-      "sell_window": "Next 12-16 days",
-      "alerts": [
-        {"type": "weather", "message": "Drought-tolerant crop, minimal irrigation needed."},
-        {"type": "pest", "message": "Watch for downy mildew in humid conditions."}
-      ]
-    },
-    "Tur": {
-      "expected_profit": 46000,
-      "history": [
-        {"season": "Kharif 2023", "avg_price": 6200, "planted_area": 15000},
-        {"season": "Kharif 2024", "avg_price": 6800, "planted_area": 16200},
-        {"season": "Kharif 2025", "avg_price": 7400, "planted_area": 17500}
-      ],
-      "mandis": [
-        {"name": "Nashik", "distance_km": 45, "price": 7100},
-        {"name": "Pune", "distance_km": 75, "price": 6950},
-        {"name": "Aurangabad", "distance_km": 100, "price": 6700}
-      ],
-      "sell_window": "Next 15-20 days",
-      "alerts": [
-        {"type": "weather", "message": "Good monsoon supports pod filling."},
-        {"type": "pest", "message": "Monitor for pod borer and wilt disease."}
-      ]
-    },
-    "Gram": {
-      "expected_profit": 38000,
-      "history": [
-        {"season": "Rabi 2023", "avg_price": 4800, "planted_area": 22000},
-        {"season": "Rabi 2024", "avg_price": 5200, "planted_area": 23500},
-        {"season": "Rabi 2025", "avg_price": 5700, "planted_area": 24800}
-      ],
-      "mandis": [
-        {"name": "Pune", "distance_km": 42, "price": 5500},
-        {"name": "Nashik", "distance_km": 65, "price": 5400},
-        {"name": "Nagpur", "distance_km": 180, "price": 5200}
-      ],
-      "sell_window": "Next 10-14 days",
-      "alerts": [
-        {"type": "weather", "message": "Cool weather favors flowering and pod set."},
-        {"type": "pest", "message": "Watch for pod borer and wilt."}
-      ]
-    },
-    "Safflower": {
-      "expected_profit": 35000,
-      "history": [
-        {"season": "Rabi 2023", "avg_price": 3800, "planted_area": 8000},
-        {"season": "Rabi 2024", "avg_price": 4100, "planted_area": 8500},
-        {"season": "Rabi 2025", "avg_price": 4400, "planted_area": 9000}
-      ],
-      "mandis": [
-        {"name": "Nashik", "distance_km": 55, "price": 4200},
-        {"name": "Pune", "distance_km": 85, "price": 4100},
-        {"name": "Aurangabad", "distance_km": 110, "price": 3950}
-      ],
-      "sell_window": "Next 12-16 days",
-      "alerts": [
-        {"type": "weather", "message": "Drought-tolerant, suitable for residual moisture."},
-        {"type": "pest", "message": "Monitor for aphid and capsule borer."}
-      ]
-    },
-    "Sunflower": {
-      "expected_profit": 36000,
-      "history": [
-        {"season": "Rabi 2023", "avg_price": 4200, "planted_area": 12000},
-        {"season": "Rabi 2024", "avg_price": 4550, "planted_area": 13200},
-        {"season": "Rabi 2025", "avg_price": 4900, "planted_area": 14500}
-      ],
-      "mandis": [
-        {"name": "Pune", "distance_km": 42, "price": 4700},
-        {"name": "Nashik", "distance_km": 65, "price": 4600},
-        {"name": "Nagpur", "distance_km": 160, "price": 4400}
-      ],
-      "sell_window": "Next 10-14 days",
-      "alerts": [
-        {"type": "weather", "message": "Requires good pollination weather."},
-        {"type": "pest", "message": "Watch for head borer and necrosis."}
-      ]
-    },
-    "Watermelon": {
-      "expected_profit": 55000,
-      "history": [
-        {"season": "Zaid 2023", "avg_price": 1200, "planted_area": 5000},
-        {"season": "Zaid 2024", "avg_price": 1400, "planted_area": 5500},
-        {"season": "Zaid 2025", "avg_price": 1600, "planted_area": 6000}
-      ],
-      "mandis": [
-        {"name": "Pune", "distance_km": 42, "price": 1500},
-        {"name": "Nashik", "distance_km": 65, "price": 1450},
-        {"name": "Aurangabad", "distance_km": 120, "price": 1380}
-      ],
-      "sell_window": "Next 5-7 days",
-      "alerts": [
-        {"type": "weather", "message": "Hot dry weather favors sweetness."},
-        {"type": "pest", "message": "Monitor for fruit fly and powdery mildew."}
-      ]
-    },
-    "Muskmelon": {
-      "expected_profit": 48000,
-      "history": [
-        {"season": "Zaid 2023", "avg_price": 1500, "planted_area": 4000},
-        {"season": "Zaid 2024", "avg_price": 1700, "planted_area": 4400},
-        {"season": "Zaid 2025", "avg_price": 1900, "planted_area": 4800}
-      ],
-      "mandis": [
-        {"name": "Nashik", "distance_km": 50, "price": 1800},
-        {"name": "Pune", "distance_km": 75, "price": 1750},
-        {"name": "Aurangabad", "distance_km": 110, "price": 1650}
-      ],
-      "sell_window": "Next 5-7 days",
-      "alerts": [
-        {"type": "weather", "message": "High temperature improves fruit quality."},
-        {"type": "pest", "message": "Watch for downy mildew and fruit fly."}
-      ]
-    },
-    "Cucumber": {
-      "expected_profit": 42000,
-      "history": [
-        {"season": "Zaid 2023", "avg_price": 1800, "planted_area": 3500},
-        {"season": "Zaid 2024", "avg_price": 2000, "planted_area": 3800},
-        {"season": "Zaid 2025", "avg_price": 2200, "planted_area": 4100}
-      ],
-      "mandis": [
-        {"name": "Pune", "distance_km": 42, "price": 2100},
-        {"name": "Nashik", "distance_km": 55, "price": 2050},
-        {"name": "Nagpur", "distance_km": 140, "price": 1950}
-      ],
-      "sell_window": "Next 5-7 days",
-      "alerts": [
-        {"type": "weather", "message": "Consistent moisture needed for quality fruits."},
-        {"type": "pest", "message": "Monitor for cucumber beetle and downy mildew."}
-      ]
-    },
-    "Bitter Gourd": {
-      "expected_profit": 38000,
-      "history": [
-        {"season": "Zaid 2023", "avg_price": 2200, "planted_area": 2800},
-        {"season": "Zaid 2024", "avg_price": 2450, "planted_area": 3000},
-        {"season": "Zaid 2025", "avg_price": 2700, "planted_area": 3200}
-      ],
-      "mandis": [
-        {"name": "Pune", "distance_km": 45, "price": 2600},
-        {"name": "Nashik", "distance_km": 70, "price": 2500},
-        {"name": "Aurangabad", "distance_km": 115, "price": 2400}
-      ],
-      "sell_window": "Next 5-7 days",
-      "alerts": [
-        {"type": "weather", "message": "Warm humid conditions favor growth."},
-        {"type": "pest", "message": "Watch for fruit fly and mosaic virus."}
-      ]
-    },
-    "Okra": {
-      "expected_profit": 36000,
-      "history": [
-        {"season": "Zaid 2023", "avg_price": 2500, "planted_area": 4500},
-        {"season": "Zaid 2024", "avg_price": 2750, "planted_area": 4800},
-        {"season": "Zaid 2025", "avg_price": 3000, "planted_area": 5100}
-      ],
-      "mandis": [
-        {"name": "Pune", "distance_km": 40, "price": 2900},
-        {"name": "Nashik", "distance_km": 60, "price": 2800},
-        {"name": "Aurangabad", "distance_km": 110, "price": 2700}
-      ],
-      "sell_window": "Next 5-7 days",
-      "alerts": [
-        {"type": "weather", "message": "High temperature promotes flowering."},
-        {"type": "pest", "message": "Monitor for shoot and fruit borer."}
+        {"type": "weather", "message": "Maintain proper water level in fields."}
       ]
     }
+  },
+  "regional_activity": {
+    "Nashik": {
+      "Tomato": { "farmers_planning": 215, "supply": "high", "demand": "medium" },
+      "Onion": { "farmers_planning": 148, "supply": "medium", "demand": "high" },
+      "Soybean": { "farmers_planning": 96, "supply": "low", "demand": "medium" }
+    },
+    "Pune": {
+      "Tomato": { "farmers_planning": 185, "supply": "high", "demand": "medium" },
+      "Wheat": { "farmers_planning": 132, "supply": "medium", "demand": "medium" },
+      "Onion": { "farmers_planning": 88, "supply": "low", "demand": "high" }
+    },
+    "Nagpur": {
+      "Cotton": { "farmers_planning": 240, "supply": "high", "demand": "high" },
+      "Soybean": { "farmers_planning": 175, "supply": "medium", "demand": "medium" },
+      "Sugarcane": { "farmers_planning": 64, "supply": "low", "demand": "medium" }
+    },
+    "Kolhapur": {
+      "Sugarcane": { "farmers_planning": 205, "supply": "high", "demand": "high" },
+      "Rice": { "farmers_planning": 120, "supply": "medium", "demand": "medium" }
+    }
+  },
+  "market_outlook": {
+    "Tomato": { "harvest_weeks": 8, "price_min": 2600, "price_max": 3150, "outlook": "favorable" },
+    "Onion": { "harvest_weeks": 6, "price_min": 2000, "price_max": 2400, "outlook": "favorable" },
+    "Wheat": { "harvest_weeks": 12, "price_min": 2200, "price_max": 2450, "outlook": "stable" },
+    "Cotton": { "harvest_weeks": 16, "price_min": 6800, "price_max": 7850, "outlook": "favorable" },
+    "Soybean": { "harvest_weeks": 10, "price_min": 4200, "price_max": 4700, "outlook": "stable" },
+    "Sugarcane": { "harvest_weeks": 36, "price_min": 3100, "price_max": 3400, "outlook": "caution" },
+    "Rice": { "harvest_weeks": 11, "price_min": 2300, "price_max": 2600, "outlook": "favorable" }
   }
 }
+

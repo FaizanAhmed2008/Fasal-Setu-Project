@@ -20,9 +20,30 @@ const CropCard = ({
   onViewDetails,
   isLoading = false,
   className = '',
+  supply,
+  demand,
+  noteKey,
+  district,
+  marketOutlook,
 }) => {
-  const { t } = useLanguage();
+  const { t, cropName } = useLanguage();
   const tone = riskMap[saturationRisk?.toLowerCase()] || riskMap.low;
+
+  let noteText = null;
+  if (noteKey) {
+    noteText = t(noteKey, {
+      district: district || '',
+      supply: supply ? t(`risk.${supply.toLowerCase()}`) : '',
+      demand: demand ? t(`risk.${demand.toLowerCase()}`) : '',
+    });
+  }
+
+  const outlookTone =
+    marketOutlook?.outlook === 'caution'
+      ? 'border-warn-200 bg-warn-50 text-warn-700'
+      : marketOutlook?.outlook === 'favorable'
+      ? 'border-forest-200 bg-forest-50 text-forest-700'
+      : 'border-charcoal-200 bg-cream-50 text-charcoal-600';
   return (
     <Card
       hover
@@ -40,7 +61,7 @@ const CropCard = ({
         <div className="flex items-start justify-between mb-5">
           <div>
             <h3 className="text-[22px] font-bold text-charcoal-800 tracking-tighter2 leading-tight">
-              {crop}
+              {cropName(crop)}
             </h3>
             <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-charcoal-400">
               {t('compare.expectedProfit')}
@@ -57,6 +78,62 @@ const CropCard = ({
           <span className="h-1.5 w-1.5 rounded-full bg-current" />
           {t(`risk.${saturationRisk?.toLowerCase() || 'low'}`).toUpperCase()} {t('cropCard.risk')}
         </span>
+
+        {(supply || demand) && (
+          <div className="mt-4 flex flex-wrap gap-2">
+            {supply && (
+              <span className="pill border border-charcoal-200 bg-cream-50 text-charcoal-600">
+                {t('regional.supply')}: {t(`risk.${supply.toLowerCase()}`)}
+              </span>
+            )}
+            {demand && (
+              <span className="pill border border-charcoal-200 bg-cream-50 text-charcoal-600">
+                {t('regional.demand')}: {t(`risk.${demand.toLowerCase()}`)}
+              </span>
+            )}
+          </div>
+        )}
+
+        {noteText && (
+          <div
+            className={`mt-4 rounded-xl border p-3 text-[12.5px] leading-[1.5] ${
+              supply === 'high'
+                ? 'border-warn-200 bg-warn-50 text-warn-700'
+                : 'border-forest-200 bg-forest-50 text-forest-700'
+            }`}
+          >
+            {noteText}
+          </div>
+        )}
+
+        {marketOutlook && marketOutlook.outlook && (
+          <div className="mt-4 rounded-xl border border-charcoal-200 bg-white p-4">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-charcoal-400">
+              {t('regional.outlookLabel')}
+            </p>
+            <div className="mt-3 grid gap-3 sm:grid-cols-3">
+              <div>
+                <p className="text-[11px] text-charcoal-500">{t('regional.harvestTime')}</p>
+                <p className="mt-1 text-[15px] font-semibold text-charcoal-800">
+                  {marketOutlook.harvest_weeks} {t('regional.unitWeeks')}
+                </p>
+              </div>
+              <div>
+                <p className="text-[11px] text-charcoal-500">{t('regional.priceRange')}</p>
+                <p className="mt-1 text-[15px] font-semibold text-charcoal-800">
+                  ₹{marketOutlook.price_min?.toLocaleString()}–₹{marketOutlook.price_max?.toLocaleString()}
+                </p>
+              </div>
+              <div>
+                <p className="text-[11px] text-charcoal-500">{t('regional.outlookLabel')}</p>
+                <span className={`mt-1 inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-[12px] font-semibold ${outlookTone}`}>
+                  <span className="h-1.5 w-1.5 rounded-full bg-current" />
+                  {t(`outlook.${marketOutlook.outlook}`)}
+                </span>
+              </div>
+            </div>
+          </div>
+        )}
 
         <p className="mt-4 text-[14px] leading-[1.6] text-charcoal-500 text-pretty">{reason}</p>
 

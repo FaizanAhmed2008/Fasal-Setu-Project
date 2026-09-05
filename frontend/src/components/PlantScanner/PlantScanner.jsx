@@ -38,7 +38,7 @@ const STAGE_KEYS = [
   'scanner.stage5',
 ];
 
-const PlantScanner = ({ isOpen, onClose, cropName }) => {
+const PlantScanner = ({ isOpen, onClose, cropName, onAnalyzed }) => {
   const { addScannerAlert } = useFarmerState();
   const { t } = useLanguage();
   const fileInputRef = useRef(null);
@@ -138,6 +138,7 @@ const PlantScanner = ({ isOpen, onClose, cropName }) => {
       setTimeout(() => {
         setResult(data);
         setState('result');
+        onAnalyzed?.(data);
       }, 650);
     } catch (err) {
       setStage(STAGE_KEYS.length - 1);
@@ -192,7 +193,7 @@ const PlantScanner = ({ isOpen, onClose, cropName }) => {
               <div className="relative px-5 pt-5 pb-6 sm:p-6">
                 <button
                   onClick={handleClose}
-                  aria-label="Close scanner"
+                  aria-label={t('scanner.close')}
                   className="absolute top-4 right-4 inline-flex h-9 w-9 items-center justify-center rounded-full text-charcoal-500 hover:bg-cream-200 hover:text-charcoal-800 transition-colors"
                 >
                   <X className="h-5 w-5" strokeWidth={2.2} />
@@ -235,7 +236,7 @@ const PlantScanner = ({ isOpen, onClose, cropName }) => {
                           <div className="relative overflow-hidden rounded-2xl border border-charcoal-100">
                             <img
                               src={preview}
-                              alt="Leaf preview"
+                              alt={t('scanner.leafPreview')}
                               className="h-48 w-full object-cover"
                             />
                           </div>
@@ -376,7 +377,7 @@ const PlantScanner = ({ isOpen, onClose, cropName }) => {
                       {preview && (
                         <img
                           src={preview}
-                          alt="Leaf preview"
+                          alt={t('scanner.leafPreview')}
                           className="mb-4 h-44 w-full object-cover rounded-2xl border border-charcoal-100"
                         />
                       )}

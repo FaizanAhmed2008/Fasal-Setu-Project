@@ -101,6 +101,43 @@ def _enrich_mandi(mandi: dict) -> dict:
     }
 
 
+def _regional_market(crop: str, district: str) -> dict:
+    """Attach regional supply/demand activity (and an i18n note key) for a crop."""
+    district_data = (_MOCK.get("regional_activity") or {}).get(district, {})
+    activity = district_data.get(crop)
+    if not activity:
+        return {"supply": None, "demand": None, "note_key": None}
+
+    supply = activity.get("supply")
+    demand = activity.get("demand")
+    if supply == "high":
+        note_key = "regional.noteHighSupply"
+    elif supply in ("low", "medium") and demand in ("high", "medium"):
+        note_key = "regional.notePositive"
+    else:
+        note_key = None
+
+    return {"supply": supply, "demand": demand, "note_key": note_key}
+
+
+def _market_outlook(crop: str) -> dict:
+    """Attach demo market outlook (harvest time / price range / outlook level)."""
+    outlook = (_MOCK.get("market_outlook") or {}).get(crop)
+    if not outlook:
+        return {
+            "harvest_weeks": None,
+            "price_min": None,
+            "price_max": None,
+            "outlook": None,
+        }
+    return {
+        "harvest_weeks": outlook.get("harvest_weeks"),
+        "price_min": outlook.get("price_min"),
+        "price_max": outlook.get("price_max"),
+        "outlook": outlook.get("outlook"),
+    }
+
+
 # ---------------------------------------------------------------------------
 # Response models (for OpenAPI docs)
 # ---------------------------------------------------------------------------
@@ -180,6 +217,9 @@ def recommend(
         _MOCK,
     )
     enriched = [_enrich_recommendation(item, land_size_f) for item in raw]
+    for item in enriched:
+        item.update(_regional_market(item["crop"], district))
+        item["market_outlook"] = _market_outlook(item["crop"])
     return {
         "district": district,
         "land_size": land_size_f,

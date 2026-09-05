@@ -74,7 +74,7 @@ const RiskCard = ({
           </div>
           <div>
             <div className="label-eyebrow">{t('landing.crop')}</div>
-            <div className="text-[20px] font-bold text-charcoal-800 tracking-tighter2 leading-tight">{crop}</div>
+            <div className="text-[20px] font-bold text-charcoal-800 tracking-tighter2 leading-tight">{t(`crop.${crop}`)}</div>
           </div>
         </div>
         <span className={`pill ${badgeBg} ${badgeText}`}>

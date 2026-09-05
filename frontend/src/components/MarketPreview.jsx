@@ -9,7 +9,7 @@ const easeOut = [0.22, 1, 0.36, 1];
 const MANDIS = [
   {
     name: 'Pune Mandi',
-    distance: '42 km',
+    distanceKm: 42,
     price: '₹2,850',
     net: '₹2,640',
     best: true,
@@ -18,7 +18,7 @@ const MANDIS = [
   },
   {
     name: 'Nashik Mandi',
-    distance: '71 km',
+    distanceKm: 71,
     price: '₹2,920',
     net: '₹2,565',
     arrival: 'Low',
@@ -26,7 +26,7 @@ const MANDIS = [
   },
   {
     name: 'Ahmednagar Mandi',
-    distance: '55 km',
+    distanceKm: 55,
     price: '₹2,760',
     net: '₹2,485',
     arrival: 'High',
@@ -69,7 +69,7 @@ const MarketPreview = () => {
           <div className="px-6 sm:px-7 py-5 border-b border-charcoal-100 flex items-center justify-between">
             <div>
               <div className="label-eyebrow">{t('landing.marketCompareLabel')}</div>
-              <div className="mt-1 text-[15px] font-semibold text-charcoal-800 tracking-tightish">{t('landing.marketRegion')}</div>
+              <div className="mt-1 text-[15px] font-semibold text-charcoal-800 tracking-tightish">{t('landing.marketRegion', { crop: t('crop.Tomato') })}</div>
             </div>
             <span className="pill bg-forest-50 text-forest-700">
               <span className="h-1.5 w-1.5 rounded-full bg-forest-500" />
@@ -101,7 +101,7 @@ const MarketPreview = () => {
                     )}
                   </div>
                   <div className="mt-1 flex items-center gap-3 text-[12px] text-charcoal-500">
-                    <span className="flex items-center gap-1"><Truck className="h-3 w-3" strokeWidth={2.2} />{m.distance}</span>
+                    <span className="flex items-center gap-1"><Truck className="h-3 w-3" strokeWidth={2.2} />{m.distanceKm} {t('unit.km')}</span>
                     <span className="flex items-center gap-1">
                       <span className={`pill text-[9.5px] ${arrivalTone[m.arrival]}`}>{t(m.arrivalKey)} {t('landing.marketArrival')}</span>
                     </span>

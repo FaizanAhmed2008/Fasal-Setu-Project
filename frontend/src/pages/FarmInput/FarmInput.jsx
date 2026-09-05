@@ -11,7 +11,6 @@ import { useLanguage } from '../../context/LanguageContext';
 const SEASONS = [
   { key: 'Kharif', labelKey: 'farm.seasonKharif' },
   { key: 'Rabi', labelKey: 'farm.seasonRabi' },
-  { key: 'Zaid', labelKey: 'farm.seasonZaid' },
 ];
 const SOILS = [
   { key: 'Black', labelKey: 'farm.soilBlack' },

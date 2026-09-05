@@ -12,6 +12,8 @@ import CropPlanning from './pages/CropPlanning/CropPlanning';
 import Advisory from './pages/Advisory/Advisory';
 import HarvestMarket from './pages/HarvestMarket/HarvestMarket';
 import Summary from './pages/Summary/Summary';
+import AlreadyPlanted from './pages/AlreadyPlanted/AlreadyPlanted';
+import ReadyToSell from './pages/ReadyToSell/ReadyToSell';
 
 function App() {
   return (
@@ -29,6 +31,8 @@ function App() {
           <Route path="/advisory" element={<Advisory />} />
           <Route path="/harvest-market" element={<HarvestMarket />} />
           <Route path="/summary" element={<Summary />} />
+          <Route path="/already-planted" element={<AlreadyPlanted />} />
+          <Route path="/ready-to-sell" element={<ReadyToSell />} />
           {/* Legacy routes - redirect to new flow */}
           <Route path="/recommendations" element={<Navigate to="/crop-recommendation" replace />} />
           <Route path="/market" element={<Navigate to="/harvest-market" replace />} />

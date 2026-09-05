@@ -275,474 +275,6 @@ export const DEMO_CROPS = {
       },
     ],
   },
-  Maize: {
-    currentPrice: 2100,
-    expectedPrice: 2280,
-    priceTrend: 'up',
-    yieldPerAcre: 5.5,
-    duration: 90,
-    season: 'Kharif',
-    expectedProfit: 41000,
-    nearestMandi: 'Pune Mandi',
-    costPerAcre: 45000,
-    withoutRiskPct: 50,
-    withRiskPct: 25,
-    diseases: [
-      {
-        name: 'Fall Armyworm',
-        confidence: 75,
-        symptoms: 'Ragged holes in leaves, frass near whorl, stunted growth',
-        treatment: 'Apply Emamectin benzoate 5% SG @ 0.4g/L. Spray in early morning or evening. Monitor whorl damage.',
-        prevention: 'Use pheromone traps for early detection. Encourage natural enemies. Avoid late planting.',
-        severity: 'High',
-      },
-      {
-        name: 'Stalk Rot',
-        confidence: 68,
-        symptoms: 'Discoloration of stalk nodes, wilting, lodging of plants',
-        treatment: 'Improve drainage. Avoid excess nitrogen. Remove infected plant debris.',
-        prevention: 'Use resistant hybrids. Balanced fertilization. Proper crop rotation.',
-        severity: 'Medium',
-      },
-      {
-        name: 'Healthy Plant',
-        confidence: 88,
-        symptoms: 'Vigorous growth. Green healthy leaves. Good cob development.',
-        treatment: 'Maintain current management practices. Monitor for pest incidence.',
-        prevention: 'Follow recommended plant population. Timely weed management.',
-        severity: 'Low',
-      },
-    ],
-  },
-  Groundnut: {
-    currentPrice: 5800,
-    expectedPrice: 6100,
-    priceTrend: 'up',
-    yieldPerAcre: 2.2,
-    duration: 110,
-    season: 'Kharif',
-    expectedProfit: 43000,
-    nearestMandi: 'Nashik Mandi',
-    costPerAcre: 45000,
-    withoutRiskPct: 48,
-    withRiskPct: 24,
-    diseases: [
-      {
-        name: 'Tikka Disease',
-        confidence: 78,
-        symptoms: 'Circular brown spots with yellow halo on leaves, defoliation',
-        treatment: 'Apply Mancozeb 75% WP @ 2g/L or Chlorothalonil 75% WP @ 1.5g/L. Remove affected leaves.',
-        prevention: 'Use resistant varieties. Seed treatment with Thiram. Avoid dense planting.',
-        severity: 'High',
-      },
-      {
-        name: 'Leaf Spot',
-        confidence: 72,
-        symptoms: 'Small brown spots on leaves, coalescing into larger lesions',
-        treatment: 'Spray Copper oxychloride 50% WP @ 2.5g/L. Ensure good air circulation.',
-        prevention: 'Treat seeds with Carbendazim. Maintain field sanitation. Crop rotation.',
-        severity: 'Medium',
-      },
-      {
-        name: 'Healthy Plant',
-        confidence: 85,
-        symptoms: 'Good canopy development. Green foliage. Pods filling well.',
-        treatment: 'Continue regular irrigation and nutrition. Monitor for leaf diseases.',
-        prevention: 'Follow recommended spacing. Balanced nutrition with calcium and boron.',
-        severity: 'Low',
-      },
-    ],
-  },
-  Bajra: {
-    currentPrice: 1850,
-    expectedPrice: 1950,
-    priceTrend: 'up',
-    yieldPerAcre: 2.8,
-    duration: 85,
-    season: 'Kharif',
-    expectedProfit: 34000,
-    nearestMandi: 'Aurangabad Mandi',
-    costPerAcre: 26000,
-    withoutRiskPct: 42,
-    withRiskPct: 20,
-    diseases: [
-      {
-        name: 'Downy Mildew',
-        confidence: 70,
-        symptoms: 'Yellow-green chlorotic streaks on leaves, white downy growth on underside',
-        treatment: 'Spray Metalaxyl-MZ @ 2.5g/L. Remove severely infected plants. Improve drainage.',
-        prevention: 'Use resistant hybrids. Seed treatment with Metalaxyl. Avoid waterlogging.',
-        severity: 'High',
-      },
-      {
-        name: 'Ergot',
-        confidence: 65,
-        symptoms: 'Honeydew on florets, dark sclerotia replacing grains',
-        treatment: 'Remove ergot bodies before harvest. Deep plowing after harvest.',
-        prevention: 'Use clean seed. Adjust sowing time to avoid flowering during high humidity.',
-        severity: 'Medium',
-      },
-      {
-        name: 'Healthy Plant',
-        confidence: 88,
-        symptoms: 'Drought-tolerant growth. Good panicle emergence. Green healthy foliage.',
-        treatment: 'Minimal intervention needed. Monitor for pest incidence.',
-        prevention: 'Follow recommended plant density. Balanced nutrition.',
-        severity: 'Low',
-      },
-    ],
-  },
-  Tur: {
-    currentPrice: 7100,
-    expectedPrice: 7400,
-    priceTrend: 'up',
-    yieldPerAcre: 1.5,
-    duration: 160,
-    season: 'Kharif',
-    expectedProfit: 46000,
-    nearestMandi: 'Nashik Mandi',
-    costPerAcre: 48000,
-    withoutRiskPct: 45,
-    withRiskPct: 22,
-    diseases: [
-      {
-        name: 'Wilt',
-        confidence: 75,
-        symptoms: 'Yellowing and wilting of leaves, vascular browning, plant death',
-        treatment: 'Drench with Carbendazim 50% WP @ 1g/L. Remove infected plants. Solarize soil.',
-        prevention: 'Use resistant varieties. Crop rotation 3-4 years. Seed treatment with Trichoderma.',
-        severity: 'High',
-      },
-      {
-        name: 'Pod Borer',
-        confidence: 78,
-        symptoms: 'Holes in pods, frass visible, damaged seeds inside pods',
-        treatment: 'Install pheromone traps. Apply Indoxacarb 14.5% SC @ 0.5ml/L. Release Trichogramma.',
-        prevention: 'Early sowing. Intercropping with sorghum. Monitor with light traps.',
-        severity: 'High',
-      },
-      {
-        name: 'Healthy Plant',
-        confidence: 86,
-        symptoms: 'Good branching. Pods developing well. Green healthy canopy.',
-        treatment: 'Continue integrated pest management. Monitor for wilt symptoms.',
-        prevention: 'Resistant varieties. Proper spacing. Balanced nutrition.',
-        severity: 'Low',
-      },
-    ],
-  },
-  Gram: {
-    currentPrice: 5500,
-    expectedPrice: 5700,
-    priceTrend: 'up',
-    yieldPerAcre: 1.8,
-    duration: 110,
-    season: 'Rabi',
-    expectedProfit: 38000,
-    nearestMandi: 'Pune Mandi',
-    costPerAcre: 35000,
-    withoutRiskPct: 40,
-    withRiskPct: 18,
-    diseases: [
-      {
-        name: 'Wilt',
-        confidence: 72,
-        symptoms: 'Sudden wilting, yellowing, vascular discoloration, plant death',
-        treatment: 'Drench soil with Carbendazim 50% WP @ 1g/L. Remove infected plants immediately.',
-        prevention: 'Use resistant varieties. Deep summer plowing. Crop rotation 3+ years.',
-        severity: 'High',
-      },
-      {
-        name: 'Pod Borer',
-        confidence: 76,
-        symptoms: 'Holes in pods, caterpillars feeding on seeds, frass accumulation',
-        treatment: 'Spray Emamectin benzoate 5% SG @ 0.4g/L. Install pheromone traps @ 10/ha.',
-        prevention: 'Early sowing. Intercrop with mustard or linseed. Bird perches.',
-        severity: 'High',
-      },
-      {
-        name: 'Healthy Plant',
-        confidence: 87,
-        symptoms: 'Good pod set. Green foliage. Uniform flowering.',
-        treatment: 'Monitor for pest incidence. Maintain soil moisture at pod filling.',
-        prevention: 'Resistant varieties. Seed treatment with Rhizobium culture.',
-        severity: 'Low',
-      },
-    ],
-  },
-  Safflower: {
-    currentPrice: 4200,
-    expectedPrice: 4400,
-    priceTrend: 'up',
-    yieldPerAcre: 1.2,
-    duration: 130,
-    season: 'Rabi',
-    expectedProfit: 35000,
-    nearestMandi: 'Nashik Mandi',
-    costPerAcre: 28000,
-    withoutRiskPct: 38,
-    withRiskPct: 17,
-    diseases: [
-      {
-        name: 'Aphid',
-        confidence: 74,
-        symptoms: 'Colonies on tender shoots, curling of leaves, sticky honeydew',
-        treatment: 'Spray Imidacloprid 17.8% SL @ 0.3ml/L. Encourage ladybird beetles.',
-        prevention: 'Early sowing. Remove weed hosts. Balanced nitrogen application.',
-        severity: 'Medium',
-      },
-      {
-        name: 'Capsule Borer',
-        confidence: 68,
-        symptoms: 'Holes in capsules, damaged seeds, frass at entry holes',
-        treatment: 'Spray Chlorantraniliprole 18.5% SC @ 0.3ml/L. Collect and destroy infested capsules.',
-        prevention: 'Pheromone traps for monitoring. Timely harvest to avoid overlap.',
-        severity: 'Medium',
-      },
-      {
-        name: 'Healthy Plant',
-        confidence: 85,
-        symptoms: 'Spiny leaves healthy. Good capsule formation. Uniform maturity.',
-        treatment: 'Monitor for aphids during flowering. Maintain crop hygiene.',
-        prevention: 'Resistant varieties. Proper spacing for air circulation.',
-        severity: 'Low',
-      },
-    ],
-  },
-  Sunflower: {
-    currentPrice: 4700,
-    expectedPrice: 4900,
-    priceTrend: 'up',
-    yieldPerAcre: 1.5,
-    duration: 95,
-    season: 'Rabi',
-    expectedProfit: 36000,
-    nearestMandi: 'Pune Mandi',
-    costPerAcre: 32000,
-    withoutRiskPct: 42,
-    withRiskPct: 20,
-    diseases: [
-      {
-        name: 'Head Borer',
-        confidence: 72,
-        symptoms: 'Damage to developing seeds in head, frass visible, reduced seed set',
-        treatment: 'Spray Emamectin benzoate 5% SG @ 0.4g/L at ray floret opening. Bird perches.',
-        prevention: 'Early sowing. Pheromone traps @ 5/ha. Avoid late planting.',
-        severity: 'High',
-      },
-      {
-        name: 'Necrosis',
-        confidence: 65,
-        symptoms: 'Brown necrotic lesions on leaves, stem cankers, premature drying',
-        treatment: 'Remove infected plants. Spray Mancozeb 75% WP @ 2g/L. Improve drainage.',
-        prevention: 'Use disease-free seed. Crop rotation. Avoid waterlogging.',
-        severity: 'Medium',
-      },
-      {
-        name: 'Healthy Plant',
-        confidence: 88,
-        symptoms: 'Large healthy head. Good seed filling. Strong stem.',
-        treatment: 'Ensure bee activity for pollination. Monitor for head borer.',
-        prevention: 'Hybrid seeds. Balanced nutrition with boron. Proper spacing.',
-        severity: 'Low',
-      },
-    ],
-  },
-  Watermelon: {
-    currentPrice: 1500,
-    expectedPrice: 1600,
-    priceTrend: 'up',
-    yieldPerAcre: 25,
-    duration: 80,
-    season: 'Zaid',
-    expectedProfit: 55000,
-    nearestMandi: 'Pune Mandi',
-    costPerAcre: 65000,
-    withoutRiskPct: 55,
-    withRiskPct: 28,
-    diseases: [
-      {
-        name: 'Fruit Fly',
-        confidence: 78,
-        symptoms: 'Punctures on fruit surface, maggots inside fruit, fruit rot',
-        treatment: 'Install cue lure traps. Bag fruits. Spray Malathion 50% EC @ 1.5ml/L.',
-        prevention: 'Field sanitation. Remove fallen fruits. Crop rotation.',
-        severity: 'High',
-      },
-      {
-        name: 'Powdery Mildew',
-        confidence: 70,
-        symptoms: 'White powdery coating on leaves, yellowing, reduced photosynthesis',
-        treatment: 'Spray Sulphur 80% WP @ 2g/L or Triadimefon 25% WP @ 0.5g/L. Improve air circulation.',
-        prevention: 'Resistant varieties. Avoid overhead irrigation. Proper spacing.',
-        severity: 'Medium',
-      },
-      {
-        name: 'Healthy Plant',
-        confidence: 85,
-        symptoms: 'Vigorous vines. Fruits developing well. Good sugar content.',
-        treatment: 'Maintain irrigation schedule. Monitor for fruit fly.',
-        prevention: 'Mulching for moisture conservation. Balanced nutrition.',
-        severity: 'Low',
-      },
-    ],
-  },
-  Muskmelon: {
-    currentPrice: 1800,
-    expectedPrice: 1900,
-    priceTrend: 'up',
-    yieldPerAcre: 20,
-    duration: 75,
-    season: 'Zaid',
-    expectedProfit: 48000,
-    nearestMandi: 'Nashik Mandi',
-    costPerAcre: 58000,
-    withoutRiskPct: 52,
-    withRiskPct: 26,
-    diseases: [
-      {
-        name: 'Downy Mildew',
-        confidence: 74,
-        symptoms: 'Yellow angular spots on upper leaf surface, downy growth on underside',
-        treatment: 'Spray Metalaxyl-MZ @ 2.5g/L. Remove severely infected leaves. Reduce humidity.',
-        prevention: 'Resistant varieties. Avoid overhead irrigation. Proper spacing.',
-        severity: 'High',
-      },
-      {
-        name: 'Fruit Fly',
-        confidence: 70,
-        symptoms: 'Sting marks on fruit, larval feeding inside, premature ripening',
-        treatment: 'Fruit bagging. Cue lure traps. Spray bait spray with Malathion + jaggery.',
-        prevention: 'Field sanitation. Destroy infested fruits. Crop rotation.',
-        severity: 'High',
-      },
-      {
-        name: 'Healthy Plant',
-        confidence: 86,
-        symptoms: 'Good netting on fruits. Sweet aroma. Healthy vine growth.',
-        treatment: 'Reduce irrigation near harvest for sweetness. Monitor for mildew.',
-        prevention: 'Trellising for better air flow. Seed treatment with Trichoderma.',
-        severity: 'Low',
-      },
-    ],
-  },
-  Cucumber: {
-    currentPrice: 2100,
-    expectedPrice: 2200,
-    priceTrend: 'up',
-    yieldPerAcre: 15,
-    duration: 60,
-    season: 'Zaid',
-    expectedProfit: 42000,
-    nearestMandi: 'Pune Mandi',
-    costPerAcre: 50000,
-    withoutRiskPct: 50,
-    withRiskPct: 25,
-    diseases: [
-      {
-        name: 'Downy Mildew',
-        confidence: 76,
-        symptoms: 'Yellow angular lesions on leaves, purplish growth on underside, rapid defoliation',
-        treatment: 'Spray Cymoxanil + Mancozeb @ 2g/L. Remove infected leaves. Improve ventilation.',
-        prevention: 'Resistant hybrids. Avoid overhead irrigation. Wide spacing.',
-        severity: 'High',
-      },
-      {
-        name: 'Cucumber Beetle',
-        confidence: 72,
-        symptoms: 'Holes in leaves, feeding on flowers and fruits, bacterial wilt transmission',
-        treatment: 'Spray Imidacloprid 17.8% SL @ 0.3ml/L. Use yellow sticky traps. Row covers early season.',
-        prevention: 'Early planting. Remove weed hosts. Crop rotation with non-cucurbits.',
-        severity: 'Medium',
-      },
-      {
-        name: 'Healthy Plant',
-        confidence: 87,
-        symptoms: 'Continuous flowering. Uniform straight fruits. Dark green leaves.',
-        treatment: 'Regular harvesting promotes more fruits. Monitor for beetles.',
-        prevention: 'Trellising. Mulching. Balanced nutrition with calcium.',
-        severity: 'Low',
-      },
-    ],
-  },
-  'Bitter Gourd': {
-    currentPrice: 2600,
-    expectedPrice: 2700,
-    priceTrend: 'up',
-    yieldPerAcre: 12,
-    duration: 70,
-    season: 'Zaid',
-    expectedProfit: 38000,
-    nearestMandi: 'Pune Mandi',
-    costPerAcre: 48000,
-    withoutRiskPct: 48,
-    withRiskPct: 24,
-    diseases: [
-      {
-        name: 'Fruit Fly',
-        confidence: 75,
-        symptoms: 'Oviposition punctures on fruit, maggots inside, fruit drop and rot',
-        treatment: 'Fruit bagging with newspaper. Cue lure traps @ 10/ha. Bait spray weekly.',
-        prevention: 'Field sanitation. Destroy infested fruits. Crop rotation.',
-        severity: 'High',
-      },
-      {
-        name: 'Mosaic Virus',
-        confidence: 68,
-        symptoms: 'Mosaic pattern on leaves, stunting, distorted fruits, reduced yield',
-        treatment: 'Remove infected plants. Control aphid vector with Imidacloprid. Disinfect tools.',
-        prevention: 'Use virus-free seeds. Rogue infected plants early. Reflective mulch.',
-        severity: 'High',
-      },
-      {
-        name: 'Healthy Plant',
-        confidence: 85,
-        symptoms: 'Good fruit set. Characteristic bitterness. Vigorous vine growth.',
-        treatment: 'Regular harvesting. Monitor for fruit fly. Support vines on trellis.',
-        prevention: 'Trellising essential. Seed treatment. Remove weed hosts.',
-        severity: 'Low',
-      },
-    ],
-  },
-  Okra: {
-    currentPrice: 2900,
-    expectedPrice: 3000,
-    priceTrend: 'up',
-    yieldPerAcre: 10,
-    duration: 55,
-    season: 'Zaid',
-    expectedProfit: 36000,
-    nearestMandi: 'Pune Mandi',
-    costPerAcre: 42000,
-    withoutRiskPct: 45,
-    withRiskPct: 22,
-    diseases: [
-      {
-        name: 'Shoot and Fruit Borer',
-        confidence: 78,
-        symptoms: 'Bore holes in shoots and fruits, frass, drooping shoots, damaged fruits',
-        treatment: 'Spray Emamectin benzoate 5% SG @ 0.4g/L. Install pheromone traps. Collect damaged fruits.',
-        prevention: 'Early sowing. Summer deep plowing. Intercrop with marigold.',
-        severity: 'High',
-      },
-      {
-        name: 'Yellow Vein Mosaic Virus',
-        confidence: 70,
-        symptoms: 'Yellow network of veins, stunting, small deformed fruits',
-        treatment: 'Remove infected plants. Control whitefly vector. Use reflective mulch.',
-        prevention: 'Resistant varieties. Early planting to avoid whitefly peak. Roguing.',
-        severity: 'High',
-      },
-      {
-        name: 'Healthy Plant',
-        confidence: 86,
-        symptoms: 'Continuous flowering. Tender fruits. Dark green healthy leaves.',
-        treatment: 'Harvest every 2-3 days. Monitor for borer and virus.',
-        prevention: 'Resistant hybrids. Seed treatment. Proper spacing.',
-        severity: 'Low',
-      },
-    ],
-  },
 };
 
 export const GROWTH_STAGES = [
@@ -820,102 +352,6 @@ const GROWTH_STAGE_DETAIL = {
     nextStage: 'Fruiting',
     daysToNext: 16,
     note: 'Panicle emergence; guard against blast and blight.',
-  },
-  Maize: {
-    stage: 'vegetative',
-    progress: 45,
-    stageIndex: 1,
-    nextStage: 'Flowering',
-    daysToNext: 22,
-    note: 'Knee-high stage; watch for fall armyworm in whorl.',
-  },
-  Groundnut: {
-    stage: 'flowering',
-    progress: 50,
-    stageIndex: 2,
-    nextStage: 'Pod Formation',
-    daysToNext: 18,
-    note: 'Pegging stage; ensure calcium for pod development.',
-  },
-  Bajra: {
-    stage: 'vegetative',
-    progress: 40,
-    stageIndex: 1,
-    nextStage: 'Flowering',
-    daysToNext: 25,
-    note: 'Tillering stage; minimal irrigation needed.',
-  },
-  Tur: {
-    stage: 'vegetative',
-    progress: 35,
-    stageIndex: 1,
-    nextStage: 'Flowering',
-    daysToNext: 30,
-    note: 'Branching stage; monitor for wilt symptoms.',
-  },
-  Gram: {
-    stage: 'flowering',
-    progress: 55,
-    stageIndex: 2,
-    nextStage: 'Pod Formation',
-    daysToNext: 15,
-    note: 'Flowering peak; watch for pod borer.',
-  },
-  Safflower: {
-    stage: 'vegetative',
-    progress: 50,
-    stageIndex: 1,
-    nextStage: 'Flowering',
-    daysToNext: 20,
-    note: 'Rosette stage; drought tolerant, monitor aphids.',
-  },
-  Sunflower: {
-    stage: 'flowering',
-    progress: 60,
-    stageIndex: 2,
-    nextStage: 'Seed Filling',
-    daysToNext: 12,
-    note: 'Ray floret opening; ensure bee activity for pollination.',
-  },
-  Watermelon: {
-    stage: 'fruiting',
-    progress: 70,
-    stageIndex: 3,
-    nextStage: 'Maturity',
-    daysToNext: 10,
-    note: 'Fruit expansion; monitor for fruit fly and sugar content.',
-  },
-  Muskmelon: {
-    stage: 'fruiting',
-    progress: 65,
-    stageIndex: 3,
-    nextStage: 'Maturity',
-    daysToNext: 10,
-    note: 'Netting developing; reduce irrigation for sweetness.',
-  },
-  Cucumber: {
-    stage: 'fruiting',
-    progress: 75,
-    stageIndex: 3,
-    nextStage: 'Harvest',
-    daysToNext: 5,
-    note: 'Continuous harvest; pick every 2-3 days for quality.',
-  },
-  'Bitter Gourd': {
-    stage: 'fruiting',
-    progress: 68,
-    stageIndex: 3,
-    nextStage: 'Maturity',
-    daysToNext: 8,
-    note: 'Fruit setting on trellis; bag fruits for fruit fly.',
-  },
-  Okra: {
-    stage: 'fruiting',
-    progress: 72,
-    stageIndex: 3,
-    nextStage: 'Harvest',
-    daysToNext: 3,
-    note: 'Daily harvest needed; monitor for borer and virus.',
   },
 };
 
@@ -1036,18 +472,6 @@ export const ADVISORY_URGENCY = {
   Soybean: 'medium',
   Sugarcane: 'high',
   Rice: 'high',
-  Maize: 'high',
-  Groundnut: 'high',
-  Bajra: 'medium',
-  Tur: 'high',
-  Gram: 'high',
-  Safflower: 'medium',
-  Sunflower: 'high',
-  Watermelon: 'high',
-  Muskmelon: 'high',
-  Cucumber: 'high',
-  'Bitter Gourd': 'high',
-  Okra: 'high',
 };
 
 export const getAdvisoryPack = (cropName) => {
@@ -1062,6 +486,21 @@ export const getAdvisoryPack = (cropName) => {
   };
 };
 
+export const ADVISORY_CARD_TYPES = [
+  { type: 'water', titleKey: 'adv.water.title' },
+  { type: 'nutrient', titleKey: 'adv.nutrient.title' },
+  { type: 'pest', titleKey: 'adv.pest.title' },
+];
+
+export const getCropAdvisories = (cropName) => {
+  const crop = resolveCropKey(cropName);
+  return ADVISORY_CARD_TYPES.map((a) => ({
+    ...a,
+    bodyKey: `adv.${crop}.${a.type}`,
+  }));
+};
+
+
 export const getOutcomeComparison = (cropName, landSize = 1) => {
   const cropKey = resolveCropKey(cropName);
   const crop = DEMO_CROPS[cropKey];
@@ -1073,19 +512,21 @@ export const getOutcomeComparison = (cropName, landSize = 1) => {
   const withPrice = crop.expectedPrice;
   const withoutPrice = Math.min(crop.currentPrice, withPrice - 80);
 
-  const revenueWith = Math.round(withPrice * quantityQuintals);
-  const revenueWithout = Math.round(withoutPrice * quantityQuintals);
   const expenses = Math.round((crop.costPerAcre || 40000) * acres);
 
-  let profitWith = revenueWith - expenses;
-  let profitWithout = revenueWithout - expenses;
-  // Always keep a believable 8–16% guided advantage.
-  const minGap = Math.max(4000 * acres, Math.round(profitWith * 0.1));
-  if (profitWith <= profitWithout) {
-    profitWithout = profitWith - minGap;
-  } else if (profitWith - profitWithout < minGap) {
-    profitWithout = profitWith - minGap;
-  }
+  // Anchor the guided (Fasal Setu) net profit to the crop's per-acre expected
+  // profit so this figure agrees with the recommendation dashboard.
+  const profitWith = Math.round((crop.expectedProfit || 35000) * acres);
+
+  // Believeable, moderate guided advantage: roughly 9–16.5% higher profit.
+  const advantagePct = 0.09 + ((cropKey.length % 4) * 0.025);
+  const benefit = Math.max(2000 * acres, Math.round(profitWith * advantagePct));
+  const profitWithout = profitWith - benefit;
+
+  // Keep revenue internally consistent: revenue = profit + expenses at the
+  // guided (expected-price) rate.
+  const revenueWith = profitWith + expenses;
+  const revenueWithout = profitWithout + expenses;
 
   const withoutRiskPct = crop.withoutRiskPct || 60;
   const withRiskPct = Math.min(crop.withRiskPct || 30, withoutRiskPct - 18);
@@ -1104,7 +545,7 @@ export const getOutcomeComparison = (cropName, landSize = 1) => {
     revenueWithout,
     profitWith,
     profitWithout,
-    potentialLoss: profitWith - profitWithout,
+    potentialLoss: benefit,
     withRiskPct,
     withoutRiskPct,
     withRisk: riskLabelFromPct(withRiskPct),
@@ -1115,24 +556,101 @@ export const getOutcomeComparison = (cropName, landSize = 1) => {
 export const getRecommendationsForSeason = (season) => {
   return Object.entries(DEMO_CROPS)
     .filter(([_, data]) => data.season === season)
-    .map(([name, data]) => {
-      // Derive saturation risk from withoutRiskPct (higher = more risk)
-      const riskPct = data.withoutRiskPct || 50;
-      let saturation_risk = 'Medium';
-      if (riskPct >= 55) saturation_risk = 'High';
-      else if (riskPct < 35) saturation_risk = 'Low';
-      
-      // Derive risk_score from withoutRiskPct
-      const risk_score = Math.min(100, Math.max(0, riskPct));
-      
-      return {
-        crop: name,
-        expected_profit: data.expectedProfit || 35000,
-        expected_profit_per_acre: data.expectedProfit || 35000,
-        saturation_risk,
-        risk_score,
-        reasonKey: `reco.reason${name}`,
-      };
-    })
+    .map(([name, data]) => ({
+      crop: name,
+      expected_profit: data.expectedProfit || 35000,
+      expected_profit_per_acre: data.expectedProfit || 35000,
+      saturation_risk: name === 'Tomato' ? 'High' : name === 'Onion' ? 'Low' : 'Medium',
+      risk_score: name === 'Tomato' ? 78 : name === 'Onion' ? 24 : 50,
+      reasonKey: `reco.reason${name}`,
+    }))
     .sort((a, b) => b.expected_profit - a.expected_profit);
 };
+
+export const REGIONAL_ACTIVITY = {
+  Nashik: {
+    Tomato: { farmers_planning: 215, supply: 'high', demand: 'medium' },
+    Onion: { farmers_planning: 148, supply: 'medium', demand: 'high' },
+    Soybean: { farmers_planning: 96, supply: 'low', demand: 'medium' },
+  },
+  Pune: {
+    Tomato: { farmers_planning: 185, supply: 'high', demand: 'medium' },
+    Wheat: { farmers_planning: 132, supply: 'medium', demand: 'medium' },
+    Onion: { farmers_planning: 88, supply: 'low', demand: 'high' },
+  },
+  Nagpur: {
+    Cotton: { farmers_planning: 240, supply: 'high', demand: 'high' },
+    Soybean: { farmers_planning: 175, supply: 'medium', demand: 'medium' },
+    Sugarcane: { farmers_planning: 64, supply: 'low', demand: 'medium' },
+  },
+  Kolhapur: {
+    Sugarcane: { farmers_planning: 205, supply: 'high', demand: 'high' },
+    Rice: { farmers_planning: 120, supply: 'medium', demand: 'medium' },
+  },
+};
+
+export const getRegionalMarketNote = (crop, district = 'Nashik') => {
+  const activity = (REGIONAL_ACTIVITY[district] || {})[crop];
+  if (!activity) return { supply: null, demand: null, note_key: null };
+  const { supply, demand } = activity;
+  if (supply === 'high') {
+    return { supply, demand, note_key: 'regional.noteHighSupply' };
+  }
+  if ((supply === 'low' || supply === 'medium') && (demand === 'high' || demand === 'medium')) {
+    return { supply, demand, note_key: 'regional.notePositive' };
+  }
+  return { supply, demand, note_key: null };
+};
+
+export const MARKET_OUTLOOK = {
+  Tomato: { harvest_weeks: 8, price_min: 2600, price_max: 3150, outlook: 'favorable' },
+  Onion: { harvest_weeks: 6, price_min: 2000, price_max: 2400, outlook: 'favorable' },
+  Wheat: { harvest_weeks: 12, price_min: 2200, price_max: 2450, outlook: 'stable' },
+  Cotton: { harvest_weeks: 16, price_min: 6800, price_max: 7850, outlook: 'favorable' },
+  Soybean: { harvest_weeks: 10, price_min: 4200, price_max: 4700, outlook: 'stable' },
+  Sugarcane: { harvest_weeks: 36, price_min: 3100, price_max: 3400, outlook: 'caution' },
+  Rice: { harvest_weeks: 11, price_min: 2300, price_max: 2600, outlook: 'favorable' },
+};
+
+export const getMarketOutlookForCrop = (cropName) =>
+  MARKET_OUTLOOK[cropName] || {
+    harvest_weeks: null,
+    price_min: null,
+    price_max: null,
+    outlook: null,
+  };
+
+export const DEMO_BUYERS = {
+  Tomato: [
+    { name: 'AgroFresh Mart', crop: 'Tomato', quantity_required: 80, offer_price: 3000 },
+    { name: 'Green Basket Foods', crop: 'Tomato', quantity_required: 120, offer_price: 2950 },
+    { name: 'Sahakar Mandi Traders', crop: 'Tomato', quantity_required: 60, offer_price: 3050 },
+  ],
+  Onion: [
+    { name: 'VeggieLink Exports', crop: 'Onion', quantity_required: 150, offer_price: 2300 },
+    { name: 'Lasalgaon Bazaar', crop: 'Onion', quantity_required: 200, offer_price: 2250 },
+    { name: 'FarmDirect Co', crop: 'Onion', quantity_required: 100, offer_price: 2350 },
+  ],
+  Wheat: [
+    { name: 'Maharashtra Grain Co-op', crop: 'Wheat', quantity_required: 300, offer_price: 2320 },
+    { name: 'Aata Mills Ltd', crop: 'Wheat', quantity_required: 250, offer_price: 2280 },
+  ],
+  Cotton: [
+    { name: 'Spinning Mills Pune', crop: 'Cotton', quantity_required: 120, offer_price: 7600 },
+    { name: 'Cotton Buyers Hub', crop: 'Cotton', quantity_required: 200, offer_price: 7450 },
+  ],
+  Soybean: [
+    { name: 'Soya Crush Plant', crop: 'Soybean', quantity_required: 180, offer_price: 4550 },
+    { name: 'Oil Mill Traders', crop: 'Soybean', quantity_required: 140, offer_price: 4480 },
+  ],
+  Sugarcane: [
+    { name: 'Kolhapur Sugar Co-op', crop: 'Sugarcane', quantity_required: 500, offer_price: 3350 },
+    { name: 'Sugar Dev Traders', crop: 'Sugarcane', quantity_required: 450, offer_price: 3300 },
+  ],
+  Rice: [
+    { name: 'Rice Millers Nagpur', crop: 'Rice', quantity_required: 220, offer_price: 2480 },
+    { name: 'Khadi & Grains Store', crop: 'Rice', quantity_required: 180, offer_price: 2420 },
+  ],
+};
+
+export const getBuyersForCrop = (cropName) => (DEMO_BUYERS[cropName] || [])

@@ -3,12 +3,10 @@ import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import {
   ArrowRight,
-  Bell,
   MapPin,
   Ruler,
   Calendar,
   Sprout,
-  Camera,
   Loader2,
   AlertCircle,
   Shield,
@@ -23,9 +21,7 @@ import { useFarmerState } from '../../context/FarmerStateContext';
 import apiService from '../../services/api';
 import Button from '../../components/ui/Button';
 import Card from '../../components/ui/Card';
-import AdvisoryCard from '../../components/AdvisoryCard/AdvisoryCard';
 import { PageNav, ProgressSteps } from '../../components/ui/PageChrome';
-import PlantScanner from '../../components/PlantScanner/PlantScanner';
 import { useLanguage } from '../../context/LanguageContext';
 import { getAdvisoryPack } from '../../data/demoData';
 
@@ -54,7 +50,6 @@ const Advisory = () => {
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [scannerOpen, setScannerOpen] = useState(false);
 
   const crop = chosenCrop?.crop || 'Tomato';
   const pack = getAdvisoryPack(crop);
@@ -90,7 +85,6 @@ const Advisory = () => {
     return () => { cancelled = true; };
   }, [chosenCrop?.crop, farm.season, setAdvisory, t]);
 
-  const scanAlerts = (advisory?.alerts || []).filter((a) => a.source === 'scanner');
   const actionSection = pack.sections.find((s) => s.id === 'action');
   const nextSection = pack.sections.find((s) => s.id === 'next');
   const precautionSection = pack.sections.find((s) => s.id === 'precaution');
@@ -166,22 +160,7 @@ const Advisory = () => {
               {t(`advisory.urgency${pack.urgency.charAt(0).toUpperCase()}${pack.urgency.slice(1)}`)}
             </span>
             <p className="text-[12.5px] text-charcoal-400">{t('advisory.demoNote')}</p>
-            <Button
-              variant="secondary"
-              size="lg"
-              onClick={() => setScannerOpen(true)}
-              className="gap-2 sm:ml-auto"
-            >
-              <Camera className="h-4 w-4" strokeWidth={2.4} />
-              {t('advisory.scanCrop')}
-            </Button>
           </div>
-
-          <PlantScanner
-            isOpen={scannerOpen}
-            onClose={() => setScannerOpen(false)}
-            cropName={crop}
-          />
 
           {actionSection && (
             <Card className="p-6 sm:p-7 mb-5 border-forest-200 bg-gradient-to-br from-forest-50/70 to-white">
@@ -255,17 +234,6 @@ const Advisory = () => {
                 </div>
               </div>
             </Card>
-          )}
-
-          {scanAlerts.length > 0 && (
-            <div className="mb-10">
-              <h3 className="text-[16px] font-semibold text-charcoal-800 mb-4">{t('advisory.scannerAlerts')}</h3>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {scanAlerts.map((alert, i) => (
-                  <AdvisoryCard key={alert.id || i} type={alert.type} message={alert.message} action={alert.action} />
-                ))}
-              </div>
-            </div>
           )}
 
           <Card className="p-6 sm:p-7 mb-10">

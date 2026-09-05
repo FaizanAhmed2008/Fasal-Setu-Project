@@ -42,7 +42,7 @@ const MandiCard = ({
         </h4>
         <span className="inline-flex items-center gap-1 text-[12px] text-charcoal-500">
           <Truck className="h-3 w-3" strokeWidth={2.3} />
-          {distance} km
+          {distance} {t('unit.km')}
         </span>
       </div>
 

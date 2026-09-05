@@ -1,12 +1,32 @@
 import React from 'react';
 import { motion, useMotionValue, useTransform, animate, useInView } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
-import { ArrowRight, Sparkles, TrendingUp, Sprout, MapPin, Sun, Cloud, Bug } from 'lucide-react';
+import { ArrowRight, Sparkles, TrendingUp, Sprout, MapPin, Sun, Cloud, Bug, Camera, Package } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { FieldScene, TinyLeaf, TinySeed } from './illustrations/FieldScene';
 
 const easeOut = [0.22, 1, 0.36, 1];
+
+const EntryButton = ({ icon: Icon, label, desc, onClick }) => (
+  <button
+    onClick={onClick}
+    className="group flex items-center gap-3 rounded-2xl border border-charcoal-200 bg-white/80 backdrop-blur px-4 py-3.5 text-left transition-all duration-300 hover:border-forest-300 hover:bg-forest-50/40 hover:shadow-soft"
+  >
+    <span className="inline-flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-forest-100 text-forest-700">
+      <Icon className="h-5 w-5" strokeWidth={2.1} />
+    </span>
+    <span className="min-w-0 flex-1">
+      <span className="block text-[14.5px] font-semibold text-charcoal-800 group-hover:text-forest-700">
+        {label}
+      </span>
+      <span className="block text-[12.5px] text-charcoal-500 leading-snug">
+        {desc}
+      </span>
+    </span>
+    <ArrowRight className="h-4 w-4 flex-shrink-0 text-charcoal-400 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:text-forest-600" strokeWidth={2.3} />
+  </button>
+);
 
 const AnimatedNumber = ({ to = 78, duration = 1.6, className = '' }) => {
   const ref = useRef(null);
@@ -147,7 +167,7 @@ const HeroVisual = () => {
               </div>
 <div>
                   <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-charcoal-400">{t('landing.crop')}</div>
-                  <div className="text-[14px] font-bold text-charcoal-800 leading-tight">Tomato</div>
+                  <div className="text-[14px] font-bold text-charcoal-800 leading-tight">{t('crop.Tomato')}</div>
                 </div>
               </div>
               <span className="pill bg-danger-50 text-danger-600">
@@ -208,7 +228,7 @@ const HeroVisual = () => {
               </div>
               <div>
                 <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-forest-600">{t('landing.smarterAlternative')}</div>
-                <div className="text-[14px] font-bold text-charcoal-800 leading-tight">Onion</div>
+                <div className="text-[14px] font-bold text-charcoal-800 leading-tight">{t('crop.Onion')}</div>
               </div>
             </div>
             <span className="pill bg-forest-50 text-forest-700">
@@ -313,6 +333,29 @@ const Hero = () => {
               <a href="#how-it-works" className="btn-ghost">
                 {t('landing.seeHow')}
               </a>
+            </motion.div>
+
+            <motion.div
+              variants={{ hidden: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: easeOut } } }}
+              className="mt-8 max-w-[520px]"
+            >
+              <p className="text-[12.5px] font-semibold uppercase tracking-[0.16em] text-charcoal-400 mb-3">
+                {t('landing.choosePath')}
+              </p>
+              <div className="grid gap-3">
+                <EntryButton
+                  icon={Camera}
+                  label={t('landing.alreadyPlanted')}
+                  desc={t('landing.alreadyPlantedDesc')}
+                  onClick={() => navigate('/already-planted')}
+                />
+                <EntryButton
+                  icon={Package}
+                  label={t('landing.readyToSell')}
+                  desc={t('landing.readyToSellDesc')}
+                  onClick={() => navigate('/ready-to-sell')}
+                />
+              </div>
             </motion.div>
 
             <motion.div

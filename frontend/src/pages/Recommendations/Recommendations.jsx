@@ -24,7 +24,7 @@ const easeOut = [0.22, 1, 0.36, 1];
 
 const Recommendations = () => {
   const navigate = useNavigate();
-  const { t } = useLanguage();
+  const { t, reasonForCrop, cropName } = useLanguage();
   const {
     farmer,
     farm,
@@ -144,7 +144,7 @@ const Recommendations = () => {
                           ? 'bg-forest-600 border-forest-600 text-white'
                           : 'bg-white/80 border-charcoal-200 text-transparent hover:border-charcoal-400'
                       }`}
-                      aria-label={isSelected ? `Deselect ${crop.crop}` : `Select ${crop.crop}`}
+                      aria-label={isSelected ? `${t('reco.deselect')} ${cropName(crop.crop)}` : `${t('reco.select')} ${cropName(crop.crop)}`}
                     >
                       <Check className="h-3.5 w-3.5" strokeWidth={3} />
                     </button>
@@ -161,8 +161,13 @@ const Recommendations = () => {
                         expectedProfit={crop.expected_profit_per_acre}
                         saturationRisk={crop.saturation_risk}
                         riskScore={crop.risk_score}
-                        reason={crop.reason}
+                        reason={reasonForCrop(crop.crop)}
                         isRecommended={i === 0}
+                        supply={crop.supply}
+                        demand={crop.demand}
+                        noteKey={crop.note_key}
+                        district={farmer.district}
+                        marketOutlook={crop.market_outlook}
                       />
                     </div>
 
@@ -174,7 +179,7 @@ const Recommendations = () => {
                         >
                           <span className="flex items-center gap-2">
                             <AlertTriangle className="h-4 w-4 text-warn-500" strokeWidth={2.4} />
-                            {t('reco.whyNot', { crop: crop.crop })}
+                            {t('reco.whyNot', { crop: cropName(crop.crop) })}
                           </span>
                           {expandedWhyNot ? (
                             <ChevronUp className="h-4 w-4" />
@@ -193,7 +198,7 @@ const Recommendations = () => {
                               className="overflow-hidden"
                             >
                               <div className="mt-2 rounded-xl border border-charcoal-100 bg-white px-4 py-3 text-[13px] leading-[1.6] text-charcoal-500">
-                                {crop.reason}
+                                {reasonForCrop(crop.crop)}
                               </div>
                             </motion.div>
                           )}
